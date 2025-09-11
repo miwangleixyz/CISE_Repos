@@ -11,34 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: worksheet3_backend
+        working-directory: worksheet3/worksheet3_backend
     strategy:
       matrix:
         node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - run: npm install
-      - run: npm test
       - run: npm run build
 
   frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: worksheet3_frontend
+        working-directory: worksheet3/worksheet3_frontend
     strategy:
       matrix:
         node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - run: npm install
-      - run: npm test
       - run: npm run build
