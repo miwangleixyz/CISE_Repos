@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+      - run: npm test --if-present
       - run: npm run build
 
   frontend:
@@ -37,4 +38,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npx next build --no-lint
+      - run: npm test --if-present
+      - run: npm run build
